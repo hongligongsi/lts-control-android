@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand colors: derived from logo (blue + black + white) -->
+    <color name="brand_blue">#FF1E88E5</color>
+    <color name="brand_blue_dark">#FF1565C0</color>
+    <color name="brand_blue_light">#FF64B5F6</color>
+
+    <color name="brand_orange">#FFFF6A00</color>  <!-- Running / active -->
+    <color name="brand_green">#FF43A047</color>   <!-- Connected -->
+    <color name="brand_red">#FFE53935</color>     <!-- Error -->
+    <color name="brand_gray">#FF9E9E9E</color>    <!-- Disconnected -->
+
+    <color name="surface_light">#FFFFFFFF</color>
+    <color name="surface_dark">#FF0A0A0A</color>
+    <color name="surface_card_light">#FFF5F5F5</color>
+    <color name="surface_card_dark">#FF1A1A1A</color>
+
+    <color name="text_primary_light">#FF1A1A1A</color>
+    <color name="text_primary_dark">#FFF5F5F5</color>
+    <color name="text_secondary_light">#FF666666</color>
+    <color name="text_secondary_dark">#FFAAAAAA</color>
+</resources>

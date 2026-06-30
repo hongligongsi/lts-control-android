@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- LTS Control 不备份任何运行时数据 -->
+</full-backup-content>

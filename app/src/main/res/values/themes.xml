@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base theme: light -->
+    <style name="Theme.LTSControl" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/surface_light</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:navigationBarColor">@color/surface_light</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+    </style>
+
+    <!-- Splash variant: dark background, hides status bar -->
+    <style name="Theme.LTSControl.Splash" parent="Theme.LTSControl">
+        <item name="android:windowBackground">@color/brand_blue</item>
+    </style>
+</resources>

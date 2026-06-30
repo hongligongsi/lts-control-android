@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 应用 -->
+    <string name="app_name">LTS 控制</string>
+    <string name="app_subtitle">LTS Respooler Pro · 安卓版</string>
+    <string name="app_version">版本 %1$s</string>
+
+    <!-- 底部导航 -->
+    <string name="tab_control">控制</string>
+    <string name="tab_settings">设置</string>
+    <string name="tab_connection">连接</string>
+    <string name="tab_more">更多</string>
+
+    <!-- 状态卡(控制 Tab) -->
+    <string name="status_connection">连接</string>
+    <string name="status_temperature">温度</string>
+    <string name="status_filament">耗材</string>
+    <string name="status_cooling_fan">冷却风扇</string>
+
+    <string name="value_connected">已连接</string>
+    <string name="value_disconnected">未连接</string>
+    <string name="value_chip_temp">芯片:%1$s°C</string>
+    <string name="value_chamber_temp">腔体:%1$s°C</string>
+    <string name="value_filament_detected">已检测</string>
+    <string name="value_filament_none">未检测到</string>
+    <string name="value_fan_on">开启</string>
+    <string name="value_fan_off">关闭</string>
+    <string name="value_unknown">—</string>
+    <string name="value_no_device">无设备</string>
+
+    <!-- 连接状态(进行中) -->
+    <string name="value_connecting">正在连接…</string>
+
+    <!-- 操作按钮 -->
+    <string name="btn_start">开始</string>
+    <string name="btn_stop">停止</string>
+    <string name="btn_pause">暂停</string>
+    <string name="btn_resume">继续</string>
+    <string name="btn_connect">连接 Respooler</string>
+    <string name="btn_save">保存</string>
+    <string name="btn_cancel">取消</string>
+    <string name="btn_close">关闭</string>
+    <string name="btn_scan">扫描</string>
+
+    <!-- 控制 Tab 其他 -->
+    <string name="label_progress">进度</string>
+    <string name="label_firmware">固件 %1$s</string>
+    <string name="format_percent">%1$d%%</string>
+    <string name="format_celsius">%1$.1f°C</string>
+    <string name="format_chip_temp">%1$.1f°C</string>
+
+    <!-- 设置 Tab(名字跟 LTS Web Control 中文字面一致) -->
+    <string name="settings_title">设置</string>
+    <string name="settings_speed">速度</string>
+    <string name="settings_fan_speed">风扇转速</string>
+    <string name="settings_fan_always_on">风扇常开</string>
+    <string name="settings_led">LED 亮度</string>
+    <string name="settings_filament_sensor">使用耗材传感器</string>
+    <string name="settings_motor_strength">运动能力</string>
+    <string name="settings_direction">转向</string>
+    <string name="settings_high_speed">高速</string>
+    <string name="settings_transfer_amount">转账金额</string>
+    <string name="settings_completion_sound">完成音效</string>
+    <string name="settings_autostop">自动停止灵敏度</string>
+    <string name="settings_reference_time">参考时间</string>
+    <string name="settings_servo_calibration">伺服校准</string>
+    <string name="settings_step_distance">步距</string>
+    <string name="settings_home_position">主场位置</string>
+    <string name="settings_pro_only">(仅 Respooler Pro 支持)</string>
+    <string name="settings_default_speed">%1$d%%</string>
+    <string name="settings_default_led">%1$d</string>
+    <string name="settings_default_fan">%1$d%%</string>
+    <string name="settings_default_motor">%1$d%%</string>
+    <string name="settings_default_step">%1$s 毫米</string>
+    <string name="settings_default_duration">%1$d 分 %2$02d 秒</string>
+    <!-- 语言切换 -->
+    <string name="settings_language">语言</string>
+    <string name="lang_system">跟随系统</string>
+    <string name="lang_en">English</string>
+    <string name="lang_zh">中文</string>
+
+    <string name="transfer_entire_spool">整盘</string>
+    <string name="transfer_1kg">1.0 千克</string>
+    <string name="transfer_500g">0.5 千克</string>
+    <string name="transfer_250g">0.25 千克</string>
+
+    <string name="sound_off">离开</string>
+    <string name="sound_simple">简单的</string>
+    <string name="sound_gliss">滑音</string>
+    <string name="sound_starwars">星球大战</string>
+
+    <string name="autostop_off">离开</string>
+    <string name="autostop_low">低的</string>
+    <string name="autostop_medium">中等的</string>
+    <string name="autostop_high">高的</string>
+
+    <string name="home_right">右边</string>
+    <string name="home_left">左边</string>
+
+    <!-- 连接 Tab -->
+    <string name="connection_title">连接</string>
+    <string name="connection_scan">扫描设备</string>
+    <string name="connection_scanning">正在扫描…</string>
+    <string name="connection_paired">已配对设备</string>
+    <string name="connection_unpair">取消配对</string>
+    <string name="connection_ble_info">蓝牙低功耗 · 有效距离约 10 米</string>
+    <string name="connection_no_devices">暂无已配对设备</string>
+    <string name="connection_select_to_connect">选择一台设备进行连接</string>
+    <string name="connection_connect_target">连接重排程序</string>
+
+    <!-- 更多 Tab -->
+    <string name="more_title">更多</string>
+    <string name="more_about">关于</string>
+    <string name="more_help">帮助与支持</string>
+    <string name="more_legal">法律声明</string>
+    <string name="more_oss">开源许可</string>
+    <string name="more_thirdparty">非官方第三方客户端,与 LTS Design 无关。仅限个人非商业用途。</string>
+    <string name="more_target_device">目标设备:%1$s</string>
+    <string name="more_target_fw">最低固件版本:%1$s</string>
+    <string name="more_build">构建类型:%1$s</string>
+    <string name="more_version_code">版本号:%1$d</string>
+    <string name="more_disclaimer_title">第三方声明</string>
+    <string name="more_disclaimer_body">本应用为独立开发,旨在为 LTS Respooler Pro 生态提供 Android 控制端。本应用未获得 LTS Design GmbH 认可、赞助或关联。LTS Respooler、LTS Control 及 LTS 标识均为 LTS Design 的商标。</string>
+
+    <string name="label_build">构建</string>
+    <string name="label_version_code">版本号</string>
+    <string name="label_debug">调试版</string>
+    <string name="label_release">正式版</string>
+
+    <!-- 错误信息 -->
+    <string name="error_no_device">未连接设备</string>
+    <string name="error_connecting">正在连接…</string>
+    <string name="error_timeout">连接超时</string>
+    <string name="error_no_bluetooth">蓝牙不可用</string>
+    <string name="error_no_bluetooth_permission">需要蓝牙权限</string>
+    <string name="error_invalid_address">无效的设备地址</string>
+    <string name="error_scan_failed">扫描失败</string>
+    <string name="error_connection_lost">连接已断开</string>
+    <string name="error_unknown">未知错误</string>
+    <string name="error_not_supported">当前主板不支持此功能</string>
+</resources>
