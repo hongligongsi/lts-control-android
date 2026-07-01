@@ -1,171 +1,162 @@
-# LTS Control for Android
+# LTS Control for Android — 安卓客户端
 
-> **Unofficial third-party Android client for LTS Respooler Pro**
-> Not affiliated with LTS Design. For personal, non-commercial use only.
+> **非官方第三方 Android 客户端,适用于 LTS Respooler Pro**
+> 与 LTS Design **无任何关联**,仅供个人非商业使用。
 
-A native Android control app for **LTS Respooler Pro** (firmware ≥ 1.2.1), targeting the gap where LTS Design only ships an iOS client (`LTS Control 1.7.1`).
+为 LTS Respooler Pro(固件 ≥ 1.2.1)写的原生 Android 控制 App,补足 LTS Design 只发 iOS 客户端(`LTS Control 1.7.1`)的空白。
 
-| Spec | Value |
-|------|-------|
-| Package | `de.ltsdesign.android.control` |
-| Version | **1.7.1-android** (aligned with iOS LTS Control 1.7.1) |
-| Min SDK | 26 (Android 8.0) |
-| Target SDK | 35 (Android 15) |
-| Language | Kotlin 2.0.20 |
+| 规格 | 值 |
+|---|---|
+| 包名 | `de.ltsdesign.android.control` |
+| 版本 | 1.7.1-android(对齐 iOS LTS Control 1.7.1) |
+| 最低 SDK | 26(Android 8.0)|
+| 目标 SDK | 35(Android 15)|
+| 编程语言 | Kotlin 2.0.20 |
 | UI | Jetpack Compose + Material 3 |
-| Architecture | MVVM + StateFlow + Repository (transport-agnostic) |
-| BLE transport | Mock (works out-of-box) + Real (placeholder, see below) |
+| 架构 | MVVM + StateFlow + Repository(transport 无关)|
+| BLE 传输 | Mock(开箱即用)+ Real(占位 stub,见下面)|
 
----
+## 已实现
 
-## ✨ Features
+这个 MVP 包含完整 UI 与 mock 数据,不用硬件也能跑起来。
 
-This MVP ships with full UI and mock data — no hardware required to test.
-
-| Tab | Status | Description |
+| 页面 | 状态 | 说明 |
 |---|---|---|
-| **Control** | ✅ Implemented | 4 status cards (Connection / Temperature / Filament / Cooling Fan), animated device illustration, Start / Pause / Resume / Stop, progress bar |
-| **Connection** | 🚧 Stub | Pair / unpair device UI (real BLE scanning TODO) |
-| **Settings** | 🚧 Stub | Drying temperature, fan speed, auto-off, LED, language |
-| **More** | ✅ Implemented | About, version info, third-party disclaimer, build info |
+| 控制 | ✅ 已完成 | 4 张状态卡(连接 / 温度 / 耗材 / 散热风扇)、动画设备示意图、开始 / 暂停 / 恢复 / 停止、进度条 |
+| 连接 | 🚧 占位 | 配对 / 解绑设备 UI(真 BLE 扫描待做) |
+| 设置 | 🚧 占位 | 语言、传送速度、风扇等(已与 LTS Web 控制 HTML + BLE 协议对齐) |
+| 更多 | ✅ 已完成 | 关于、版本、第三方声明、构建信息 |
 
-Splash screen with animated logo, light + dark theme following Android system.
+启动屏带动画 logo,白天 / 夜间主题跟随系统。
 
----
+## 设计目标
 
-## 📸 Screenshots (target)
+App 复刻 LTS Respooler 控制面板布局:
 
-The app reproduces the LTS Respooler control layout:
-- **Logo**: black center disc + two 180°-symmetric blue arcs (cool/heat fan, top-down view)
-- **4 status cards** in 2×2 grid
-- **Large circular device illustration** in center (canvas-drawn, spinning when running)
-- **Start / Stop / Pause / Resume** buttons with progress bar
-- **Bottom 4-tab nav**: Control · Connection · Settings · More
+- **Logo**:黑色中心圆盘 + 两条 180 度对称的蓝色弧(俯视散热风扇/加热风扇)
+- **4 张状态卡** 排成 2×2
+- **大圆形设备示意图** 居中(canvas 绘制,运行时旋转)
+- **开始 / 停止 / 暂停 / 恢复** 按钮带进度条
+- **底部 4 个 Tab**:控制 · 连接 · 设置 · 更多
 
----
+## 快速开始
 
-## 🏃 Quick start
+### 前置准备
 
-### Prerequisites
-- Android Studio Koala (2024.1.1+) or later
+- Android Studio Koala(2024.1.1+)或更新版
 - JDK 17
-- Android SDK 35 (compile), 26+ device
+- Android SDK 35(编译用), 26+ 真机
 
-### Open & run
-1. Open Android Studio → `File → Open` → select `LTSControl-Android/`
-2. Wait for Gradle sync (downloads AGP 8.5.2, Compose BOM 2024.08, etc.)
-3. Pick `app` run config → choose device or emulator (API 26+)
-4. **Run ▶️**
+### 打开并运行
 
-On first launch you'll see the splash → Control tab with **Disconnected** state.
-Tap the **Scan for Devices** button (or `Settings → Connection`) — the mock transport will connect after 800ms simulation.
+1. Android Studio → 文件 → 打开 → 选择 `LTSControl-Android/`
+2. 等待 Gradle sync(会下载 AGP 8.5.2、Compose BOM 2024.08 等)
+3. 选 `app` 运行配置 → 选真机或模拟器(API 26+)
+4. 点 运行 ▶️
 
-### Build APK
+第一次启动会看到启动屏 → 控制 Tab 显示**未连接**状态。
+点 **扫描设备** 按钮(或 设置 → 连接) — mock 传输会在 800ms 模拟连接后跑起来。
+
+### 构建 APK
+
 ```bash
 cd LTSControl-Android
-./gradlew assembleDebug       # → app/build/outputs/apk/debug/app-debug.apk
-./gradlew assembleRelease     # signed release APK (needs keystore)
+./gradlew assembleDebug       # 产出 app/build/outputs/apk/debug/app-debug.apk
+./gradlew assembleRelease     # 签名 release APK(需要 keystore)
 ```
 
-### Install on device
+### 安装到设备
+
 ```bash
 adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
 
----
+## 接真 BLE
 
-## 🔌 Wiring up real BLE
-
-The app ships with a `MockTransport` that simulates the LTS Respooler Pro.
-To switch to real hardware, replace the line in `ControlViewModel.kt`:
+App 默认用 `MockTransport`,模拟 LTS Respooler Pro。
+要切到真硬件,改 `ControlViewModel.kt` 里这行:
 
 ```kotlin
 private val transport: BleTransport = MockTransport()
 ```
 
-with:
+改为:
 
 ```kotlin
 private val transport: BleTransport = LtsBleTransport(application)
 ```
 
-### ⚠️ You will need the BLE protocol
+### 你需要 BLE 协议
 
-LTS Design hasn't publicly documented the GATT profile for Respooler Pro.
-You'll need to:
+LTS Design 没有公开 Respooler Pro 的 GATT profile,所以你得自己:
 
-1. **Capture iOS app traffic** with PacketLogger or nRF Connect while paired to a real device
-2. **Identify Service UUID + Characteristic UUID** (likely proprietary 128-bit UUIDs)
-3. **Reverse-engineer the protocol**:
-   - Which characteristic to `write` for control commands (Start/Stop/Pause/Resume/setTemp/setFan)?
-   - Which characteristic `notify` pushes status frames (chip temp / chamber temp / progress)?
-4. Fill the TODO comments in `LtsBleTransport.kt`:
-   - `onServicesDiscovered()` — find service & characteristic UUIDs
-   - `onCharacteristicChanged()` — parse `parseStatusFrame(data: ByteArray)`
-   - `start/stop/pause/resume/setTargetTemp/setFanOn` — write `buildCommandFrame(opcode, payload)`
+1. **抓 iOS 应用流量**:用 PacketLogger 或 nRF Connect,连真设备后看
+2. **识别 Service UUID + Characteristic UUID**(很可能是 128 位私有 UUID)
+3. **逆向协议**:
+   - 哪个 characteristic 用来 `write` 控制命令(开始/停止/暂停/恢复/设温度/设风扇)?
+   - 哪个 characteristic `notify` 推状态帧(芯片温度 / 仓温 / 进度)?
+4. 填 `LtsBleTransport.kt` 里的 TODO 注释:
+   - `onServicesDiscovered()` — 找到 service & characteristic UUID
+   - `onCharacteristicChanged()` — 解析 `parseStatusFrame(data: ByteArray)`
+   - `start/stop/pause/resume/setTargetTemp/setFanOn` — 写 `buildCommandFrame(opcode, payload)`
 
-All methods are already in place with TODO markers — this is plug-and-play once the protocol is known.
+所有方法已有 TODO 标记,协议知道就能 plug-and-play。
 
-### Capturing the iOS App's BLE
+### 抓 iOS App 的 BLE
 
-If you have access to a Mac + iPhone:
+如果你能搞到 Mac + iPhone:
 
 ```bash
-# macOS Hardware IO Tools → Bluetooth Explorer (legacy)
-# Or install nRF Connect on iOS, pair, watch characteristic reads/writes
+# macOS Hardware IO Tools → Bluetooth Explorer(老的)
+# 或者 iOS 上装 nRF Connect,配对后看 characteristic 读写
 ```
 
-Better yet: log the iOS app via Frida or use a BLE sniffer (nRF52840 dongle + Wireshark with bt-att parser).
+更好:用 Frida 拦 iOS App 的 BLE 调用,或者用 BLE sniffer(nRF52840 加密狗 + Wireshark + bt-att 解析器)。
 
----
-
-## 🏗 Architecture
+## 项目结构
 
 ```
 ┌──────────────────────────────────────────────────────┐
-│  Compose UI (ControlScreen / Settings / Connection)  │
+│  Compose UI(控制 / 设置 / 连接 / 更多)              │
 └──────────────────┬───────────────────────────────────┘
                    ▼ StateFlow<RespoolerState>
 ┌──────────────────────────────────────────────────────┐
-│           ControlViewModel (AndroidViewModel)        │
+│           ControlViewModel(AndroidViewModel)         │
 │   connect() start() stop() pause() resume() ...      │
 └──────────────────┬───────────────────────────────────┘
                    ▼
 ┌──────────────────────────────────────────────────────┐
 │         interface BleTransport                       │
 └────────┬─────────────────────────┬───────────────────┘
-         ▼ Mock (default)          ▼ Real (TODO)
+         ▼ Mock(默认)             ▼ Real(TODO)
    ┌──────────────┐         ┌────────────────────┐
    │ MockTransport│         │ LtsBleTransport    │
-   │ - fake data  │         │ - BluetoothGatt    │
-   │ - 90s ramp   │         │ - BLE 5.0          │
+   │ - 假数据     │         │ - BluetoothGatt    │
+   │ - 90 秒爬升 │         │ - BLE 5.0          │
    └──────────────┘         └────────────────────┘
 ```
 
----
+## 设计系统
 
-## 🎨 Design system
+颜色从 logo 衍生(黑中心 + 蓝弧):
 
-Colors derived from the logo (black center disc + blue arcs):
-
-| Token | Light | Dark | Usage |
+| Token | 白天 | 夜晚 | 用途 |
 |---|---|---|---|
-| `primary` | `#1E88E5` (brand blue) | `#64B5F6` | CTA, progress, accents |
-| `secondary` | `#FF6A00` (orange) | same | "Running" state |
-| `surface` | white | `#0A0A0A` | background |
-| `surfaceVariant` | `#F5F5F5` | `#1A1A1A` | cards, chips |
-| on-surface | `#1A1A1A` | `#F5F5F5` | main text |
+| 主色 | `#1E88E5`(品牌蓝)| `#64B5F6` | CTA、进度条、强调 |
+| 次色 | `#FF6A00`(橘)| 同上 | "运行中"状态 |
+| 表面 | 白 | `#0A0A0A` | 背景 |
+| 表面变体 | `#F5F5F5` | `#1A1A1A` | 卡片、chip |
+| 表面字 | `#1A1A1A` | `#F5F5F5` | 主文字 |
 
-**Status colors:**
-- 🟢 Connected: `#43A047` (green)
-- 🔵 Connecting: `#1E88E5` (blue)
-- 🟠 Running: `#FF6A00` (orange)
-- ⚪ Disconnected: `#9E9E9E` (gray)
-- 🔴 Error: `#E53935` (red)
+**状态色:**
 
----
+- 🟢 已连接:`#43A047`(绿)
+- 🔵 连接中:`#1E88E5`(蓝)
+- 🟠 运行中:`#FF6A00`(橘)
+- ⚪ 未连接:`#9E9E9E`(灰)
+- 🔴 错误:`#E53935`(红)
 
-## 📂 Project layout
+## 文件组织
 
 ```
 LTSControl-Android/
@@ -176,16 +167,20 @@ LTSControl-Android/
 ├── gradlew / gradlew.bat
 ├── app/
 │   ├── build.gradle.kts
+│   ├── proguard-rules.pro
 │   └── src/main/
 │       ├── AndroidManifest.xml
 │       ├── java/de/ltsdesign/android/control/
 │       │   ├── MainActivity.kt
 │       │   ├── data/
 │       │   │   ├── ble/
-│       │   │   │   ├── BleTransport.kt        ← interface
-│       │   │   │   └── LtsBleTransport.kt    ← real (stub)
+│       │   │   │   ├── BleTransport.kt        ← 接口
+│       │   │   │   └── LtsBleTransport.kt    ← 真(stub)
 │       │   │   ├── model/RespoolerState.kt
 │       │   │   └── repository/MockTransport.kt
+│       │   ├── i18n/
+│       │   │   ├── LocaleHelper.kt           ← 语言切换
+│       │   │   └── AppViewModel.kt
 │       │   ├── navigation/
 │       │   │   ├── AppNavigation.kt
 │       │   │   └── BottomBar.kt
@@ -206,42 +201,37 @@ LTSControl-Android/
 │           ├── values/colors.xml, strings.xml, themes.xml
 │           ├── values-night/themes.xml
 │           └── values-zh/strings.xml
-└── docs/
 ```
 
----
+## 国际化
 
-## 🌍 Localization
+- **英文**(默认):`values/strings.xml`
+- **简体中文**:`values-zh/strings.xml`
 
-- English (default): `values/strings.xml`
-- Simplified Chinese: `values-zh/strings.xml`
+切换语言:设置 → 语言 → 跟随系统 / English / 中文。
 
-Add more by dropping `values-<locale>/strings.xml`.
+加新语言就新建 `values-<locale>/strings.xml` 即可。
 
----
+## 法律声明
 
-## ⚖️ Legal
+**非官方第三方客户端,与 LTS Design 无任何关联。**
 
-**Unofficial third-party client, not affiliated with LTS Design.**
+- LTS Respooler Pro 是 LTS Design(德国)的产品
+- "LTS Control" iOS 应用 © LTS Design
+- 这个 Android 客户端是我独立开发的,**没有反向工程 LTS 的私有代码**
+- BLE 协议实现需要用户自行研究 + 仅供个人使用
+- 所有商标归各自所有者
 
-- LTS Respooler Pro is a product of LTS Design (Germany)
-- "LTS Control" iOS app is © LTS Design
-- This Android client is independently developed, no reverse engineering of LTS's proprietary code
-- BLE protocol implementation requires user-driven reverse engineering for personal use
-- All trademarks belong to their respective owners
+**本仓库许可:** 待选(默认 Apache-2.0 或 MIT,发布前选)
 
-**License of this code:** TBD (default: Apache-2.0 OR MIT; choose before publishing)
+**仅供个人非商业使用。** 公开发布前请先通知 LTS Design。
 
-**For non-commercial personal use only.** Drop a note to LTS Design before public release.
+## 后续计划
 
----
-
-## 🤝 What's next
-
-- [ ] Plug real BLE protocol (requires hardware + reverse engineering)
-- [ ] Async firmware-update flow
-- [ ] Temperature history chart on Control tab
-- [ ] Material You dynamic colors (Android 12+)
-- [ ] Multi-language (de, fr, ja, ko, es)
-- [ ] Wear OS companion
-- [ ] Publish to F-Droid (open-source prerequisite)
+- [ ] 接真 BLE 协议(需要硬件 + 逆向)
+- [ ] 异步固件升级流程
+- [ ] 控制 Tab 加温度历史图
+- [ ] Material You 动态取色(Android 12+)
+- [ ] 多语言(德、法、日、韩、西)
+- [ ] Wear OS 配套 App
+- [ ] 上 F-Droid(开源前置)
